@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="mainmod1">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,13 +30,34 @@
      </nav>
      <div class="container-fluid">
         <h1>My Blog</h1>
-        <p><font size="3" color="blue">This is my official blog</p>
+        <p>This is my official blog</p>
         <div class="row">
-          <div class="col-md-9">
+          <p> {{3 + 4}}</p>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-9" ng-controller='HideCtrl as hc'>
             <p>Main content</p>
+            <!-- document.write(hc.blogcontent); -->
+            <!-- <h2 ng-show="hc.my_var.publish">{{ hc.name }}</h2> -->
+            <!-- <h2 ng-show="hc.my_var2.publish">{{ hc.my_var }}</h2> -->
+            <h2 ng-show="hc.publish">{{ hc.contents[0].name }}</h2>
+            <div class="container-fluid" ng-hide="hc.publish">
+            <table class="table table-bordered">
+                <tr ng-repeat="content in hc.contents | limitTo: -2">
+                  <td>{{ content.name | uppercase }}</td>
+                  <td>{{ content.author }}</td>
+                  <td>{{ content.created }}</td>
+                  <td>{{ content.text | limitTo: 15 }}</td>
+                </tr>
+
+            </table>
+            </div>
+            <!-- <h2>{{hc.myfunc}}</h2> -->
             <hr>
             <div class="col-md-9">
               <p>Savitribai was taught to read and write by her husband, Jyotirao. As one of the very few indigenous literate women of the time, she played a full part in her husband's social reform movement by becoming a teacher in the schools he started for girls and later for the so called untouchables in Pune. For this task, she had to endure a lot of abuse at the hands of the orthodox society of Pune. The couple were felicitated by the colonial government of Bombay Presidency in 1850s for this work.</p>
+              <button type="button" class="btn btn-default">Submit</button>
             </div>
           </div>
 
@@ -45,7 +66,9 @@
               <img src="assets/images/Koala.jpg" width="200" height="100" alt="Image not found" class="img-circle"/>
               <ul>
                 <li><a href="#">About</a></li>
-
+                <li><a href="#">Archives</a></li>
+                <li><a href="#">Elsewhere</a></li>
+              </ul>  
           </div>
         </div>
      </div>
@@ -54,10 +77,12 @@
     <!-- </div> -->
    
     
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="assets/js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="assets/js/angular.min.js"></script>
+    <script src="assets/js/angular/app.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+
   </body>
 </html>
