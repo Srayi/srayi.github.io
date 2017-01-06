@@ -9,10 +9,15 @@ app.controller("HomeCtrl", function(){
 		}
 		this.my_var2 = {
 			name: 'Rayi',
-			publish: false
+			publish: true
 		}
 });
 app.controller("HideCtrl",function(){
+    this.blogtitle="234";
+    this.password= "";
+    this.blogtext= "";
+    this.publish=true;
+    /*this.title="";
 	this.publish=false
 	this.contents=[ {
 		name: 'name1',
@@ -31,5 +36,19 @@ app.controller("HideCtrl",function(){
 	'item1',
 	'item2',
 	'item3',
-	]
+	]*/
+
+    this.content=[];
+    this.submit_clicked = function(){
+        var temp={};
+        temp.name=this.blogtitle;
+        temp.author=this.password;
+        temp.created=this.blogtext;
+        temp.publish = this.publish;
+        // temp.password=this.password;
+        // temp.text=this.blogtext;
+        this.content.push(temp);
+      
+    } 
+
 });
